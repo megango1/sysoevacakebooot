@@ -19,7 +19,7 @@ from database import (
 )
 from keyboards import (
     main_menu_keyboard, back_keyboard, payment_keyboard,
-    admin_main_keyboard, admin_sections_list_keyboard,
+    contact_keyboard, admin_main_keyboard, admin_sections_list_keyboard,
     subsections_keyboard, choose_parent_keyboard, skip_keyboard,
 )
 from content import TEXTS, SECTION_LABELS, SECTION_KEYS
@@ -280,7 +280,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"📂 {label}", reply_markup=subsections_keyboard(subsections, parent_key)
             )
     elif text == "📩 Зв'язок з автором":
-        await update.message.reply_html(TEXTS["contact_author"])
+        await update.message.reply_html(TEXTS["contact_author"], reply_markup=contact_keyboard())
     else:
         await update.message.reply_html(TEXTS["welcome_access"], reply_markup=main_menu_keyboard(True))
 
